@@ -6,6 +6,8 @@
     <title>CV - Emilien KUJAWA</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -32,7 +34,9 @@
                 </div>
             </section>
 
-            <button class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> Télécharger PDF</button>
+                <button id="downloadPdf" class="btn-pdf">
+                <i class="fa-solid fa-file-pdf"></i> Télécharger PDF
+            </button>
         </aside>
 
         <main class="main-content">
@@ -136,6 +140,29 @@
             </section>
         </aside>
     </div>
+    <script>
+    const button = document.getElementById("downloadPdf");
+
+    button.addEventListener("click", () => {
+        const { jsPDF } = window.jspdf;
+
+        // Sélectionne la zone à convertir en PDF (ici tout le body)
+        const element = document.body;
+
+        html2canvas(element, { scale: 2 }).then((canvas) => {
+            const imgData = canvas.toDataURL("image/png");
+            const pdf = new jsPDF("p", "mm", "a4");
+
+            const imgProps = pdf.getImageProperties(imgData);
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+            pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+            pdf.save("CV-Emilien-KUJAWA.pdf");
+        });
+    });
+</script>
 </body>
 
 </html>
+
