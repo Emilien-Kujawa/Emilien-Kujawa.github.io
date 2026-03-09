@@ -6,39 +6,13 @@
     <title>CV - Emilien KUJAWA</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Optimisation pour l'export PDF via Impression */
-        @media print {
-            #downloadPdf, .btn-pdf, .social-links {
-                display: none !important;
-            }
-            body {
-                background: white !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-            .container {
-                box-shadow: none !important;
-                width: 100% !important;
-                max-width: none !important;
-                margin: 0 !important;
-            }
-            .card {
-                page-break-inside: avoid;
-            }
-            .sidebar {
-                background-color: #1a1a2e !important; /* Garde la couleur de la barre latérale */
-                -webkit-print-color-adjust: exact;
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="container">
         <aside class="sidebar">
             <div class="profile-container">
                 <div class="profile-img">
-                    <img src="photo cvasa _page-0001.jpg" alt="Photo de Emilien KUJAWA">
+                    <img src="photo cvasa _page-0001.jpg" alt="Emilien KUJAWA">
                 </div>
             </div>
 
@@ -60,9 +34,11 @@
 
             <div class="tooltip-container">
                 <button id="downloadPdf" class="btn-pdf">
-                        <i class="fa-solid fa-file-pdf"></i> Télécharger PDF
+                    <i class="fa-solid fa-file-pdf"></i> Télécharger PDF
                 </button>
-                    <span class="tooltip-text">Une fenêtre d'impression va s'ouvrir. Choisissez <b>"Enregistrer au format PDF"</b> dans la destination.</span>
+                <span class="tooltip-text">
+                    Cliquez, puis choisissez <b>"Enregistrer au format PDF"</b> dans la liste des imprimantes.
+                </span>
             </div>
         </aside>
 
@@ -77,11 +53,11 @@
             <div class="card exp-card-detailed">
                 <div class="exp-header">
                     <span class="type-tag tag-army">Armée</span>
-                    <span class="exp-date">Avril 2025 - à aujourd'hui</span>
+                    <span class="exp-date">Avril 2025 - Présent</span>
                 </div>
                 <h3>Soldat de réserve</h3>
                 <p class="company">152ème régiment d’infanterie</p>
-                <p class="details">Discipline, esprit de corps et gestion opérationnelle en environnement exigeant. Développement d'une forte capacité d'adaptation et du sens des responsabilités.</p>
+                <p class="details">Discipline, esprit de corps et gestion opérationnelle en environnement exigeant.</p>
             </div>
 
             <div class="card exp-card-detailed">
@@ -91,7 +67,7 @@
                 </div>
                 <h3>Equipier polyvalent</h3>
                 <p class="company">McDonald’s</p>
-                <p class="details">Capacité d'adaptation et travail d'équipe sous flux tendu. Gestion du stress, respect des procédures strictes et sens du service client.</p>
+                <p class="details">Gestion du stress, respect des procédures et travail d'équipe sous flux tendu.</p>
             </div>
 
             <div class="card exp-card-detailed">
@@ -101,11 +77,7 @@
                 </div>
                 <h3>Port de Strasbourg</h3>
                 <p class="company">Port Autonome</p>
-                <p class="details">
-                    Découverte des infrastructures critiques nécessaires au fonctionnement du port et identification des zones sensibles. 
-                    Immersion et observation de diverses spécialités : 
-                    <strong>géomètre-cartographe</strong>, <strong>maintenance informatique</strong> et gestion technique.
-                </p>
+                <p class="details">Observation de la maintenance informatique et des infrastructures critiques.</p>
             </div>
 
             <h2 class="section-heading">Formations</h2>
@@ -115,7 +87,8 @@
                     <p><strong>BTS Services Informatiques aux Organisations</strong></p>
                     <p class="school">Lycée Camille Sée, Colmar</p>
                 </div>
-                <div class="edu-item" style="margin-top: 20px; padding-top: 15px; border-top: 1px dashed #eee;">
+                <div class="edu-separator"></div>
+                <div class="edu-item">
                     <p class="date">2023 - 2025</p>
                     <p><strong>Baccalauréat Général</strong> - Mention Assez Bien</p>
                     <p class="school">Spécialités : HGGSP / SES</p>
@@ -126,37 +99,26 @@
         <aside class="right-panel">
             <section class="card right-card">
                 <h2 class="section-title">Compétences</h2>
-                
                 <p class="skill-category-right">Cyber & Réseaux</p>
                 <div class="tags-right">
-                    <span>ANSSI (SecNum)</span>
-                    <span>RGPD (CNIL)</span>
-                    <span>Linux / Ubuntu</span>
-                    <span>Réseaux & Sécurité</span>
-                    <span>Mise en place réseaux (VLAN)</span>
+                    <span>ANSSI</span> <span>RGPD</span> <span>Linux</span> <span>VLAN</span>
                 </div>
 
-                <p class="skill-category-right" style="margin-top: 20px;">Programmation & Data</p>
+                <p class="skill-category-right" style="margin-top: 20px;">Programmation</p>
                 <div class="tags-right">
-                    <span>C#</span>
-                    <span>Java</span>
-                    <span>Python</span>
-                    <span>MySQL</span>
+                    <span>C#</span> <span>Java</span> <span>Python</span> <span>MySQL</span>
                 </div>
                 
-                <p class="skill-category-right" style="margin-top: 20px;">Transversales</p>
+                <p class="skill-category-right" style="margin-top: 20px;">Soft Skills</p>
                 <div class="tags-right">
-                    <span>Gestion du stress</span>
-                    <span>Travail sous pression</span>
-                    <span>Esprit d'équipe</span>
-                    <span>Anglais (B2)</span>
+                    <span>Gestion stress</span> <span>Esprit d'équipe</span> <span>Anglais B2</span>
                 </div>
             </section>
 
             <section class="card right-card">
                 <h2 class="section-title">Loisirs</h2>
                 <div class="interests-vertical">
-                    <div class="interest-item"><i class="fa-solid fa-person-running"></i> Marche & Course à pied</div>
+                    <div class="interest-item"><i class="fa-solid fa-person-running"></i> Course à pied</div>
                     <div class="interest-item"><i class="fa-solid fa-gamepad"></i> Jeux Vidéo</div>
                     <div class="interest-item"><i class="fa-solid fa-microchip"></i> Hardware PC</div>
                 </div>
@@ -166,11 +128,8 @@
 
     <script>
         document.getElementById("downloadPdf").addEventListener("click", () => {
-            // Utilise la fonction d'impression du navigateur pour un PDF de haute qualité
             window.print();
         });
     </script>
 </body>
 </html>
-
-
