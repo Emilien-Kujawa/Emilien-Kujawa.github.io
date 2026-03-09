@@ -1,221 +1,96 @@
-:root {
-    --sidebar-color: #0d0d2b;
-    --main-bg: #f8faff;
-    --accent-color: #4834d4;
-    --text-white: #ffffff;
-    --text-dark: #2d3436;
-    --card-shadow: 0 10px 20px rgba(0,0,0,0.05);
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-    font-family: 'Inter', 'Segoe UI', sans-serif;
-    background-color: var(--main-bg);
-    color: var(--text-dark);
-    line-height: 1.6;
-}
-
-.container { display: flex; min-height: 100vh; }
-
-.sidebar {
-    width: 280px;
-    background-color: var(--sidebar-color);
-    color: var(--text-white);
-    padding: 40px 20px;
-    flex-shrink: 0;
-}
-
+/* --- 1. STYLE DE LA PHOTO DE PROFIL --- */
 .profile-img {
-    width: 140px; height: 140px;
-    background: #444; border-radius: 15px;
-    margin-bottom: 25px; overflow: hidden;
-    border: 3px solid rgba(255,255,255,0.1);
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    border-radius: 15px; /* Coins arrondis comme sur ta capture */
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    background-color: #333; /* Fond gris si l'image rate */
 }
 
-.profile-img img { width: 100%; height: 100%; object-fit: cover; }
-h1 { font-size: 1.6em; line-height: 1.1; }
-.lastname { color: #8884ff; text-transform: uppercase; }
-.subtitle { opacity: 0.8; font-size: 0.85em; margin-bottom: 30px; }
-hr { border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 0 20px 0; }
-
-.contact-section ul { list-style: none; margin-bottom: 20px; }
-.contact-section li { font-size: 0.8em; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-
-.btn-linkedin {
-    display: block; background: var(--accent-color); color: white;
-    text-decoration: none; text-align: center; padding: 10px;
-    border-radius: 8px; font-weight: bold; font-size: 0.85em;
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Évite de déformer ta photo */
+    display: block;
 }
 
-.btn-pdf {
-    width: 100%; background: #ff5e57; color: white; border: none;
-    padding: 12px; border-radius: 8px; font-weight: bold; margin: 20px 0; cursor: pointer;
+/* --- 2. STYLE DE LA BULLE (TOOLTIP) --- */
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-top: 20px;
 }
 
-.main-content { flex: 1; padding: 40px; }
-.card { background: white; padding: 22px; border-radius: 18px; box-shadow: var(--card-shadow); margin-bottom: 20px; }
-.section-title { color: var(--accent-color); margin-bottom: 15px; font-size: 1.2em; text-transform: uppercase; letter-spacing: 1px; }
-.section-heading { margin: 30px 0 15px 0; font-size: 1.3em; color: var(--text-dark); border-left: 5px solid var(--accent-color); padding-left: 15px; }
-
-.exp-card-detailed { border-left: 4px solid #eee; transition: 0.3s; }
-.exp-card-detailed:hover { border-left-color: var(--accent-color); }
-.exp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.exp-date { font-size: 0.85em; font-weight: bold; color: #777; }
-.company { font-weight: bold; color: var(--accent-color); font-size: 0.95em; }
-.details { margin-top: 10px; font-size: 0.9em; color: #555; }
-
-.type-tag { font-size: 0.6em; text-transform: uppercase; font-weight: bold; padding: 3px 8px; border-radius: 5px; }
-.tag-army { background: #e3f2fd; color: #1565c0; }
-.tag-job { background: #fff3e0; color: #ef6c00; }
-.tag-pro { background: #f3e5f5; color: #8e24aa; }
-
-.edu-item .date { font-weight: bold; color: var(--accent-color); font-size: 1em; }
-.school { font-style: italic; color: #666; font-size: 0.9em; }
-
-.right-panel { width: 300px; padding: 40px 20px; flex-shrink: 0; }
-.skill-category-right { font-weight: bold; font-size: 0.9em; margin-bottom: 10px; color: #555; }
-.tags-right { display: flex; flex-wrap: wrap; gap: 8px; }
-.tags-right span {
-    background: var(--accent-color); color: white;
-    padding: 5px 12px; border-radius: 6px; font-size: 0.75em;
+.tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 10;
+    bottom: 125%; /* Position au-dessus du bouton */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    pointer-events: none; /* L'utilisateur ne peut pas cliquer sur la bulle */
 }
 
-.interests-vertical { display: flex; flex-direction: column; gap: 12px; }
-.interest-item { display: flex; align-items: center; gap: 10px; font-size: 0.9em; font-weight: 500; }
-.interest-item i { color: var(--accent-color); width: 20px; }
+/* La petite flèche sous la bulle */
+.tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
 
+/* Affichage au survol */
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* --- 3. RÉGLAGES POUR L'IMPRESSION PDF --- */
 @media print {
-    /* Cache les éléments inutiles sur le PDF */
-    #downloadPdf, .btn-pdf, .social-links {
+    /* On cache ce qui ne doit pas être sur le papier */
+    #downloadPdf, 
+    .tooltip-text, 
+    .social-links {
         display: none !important;
     }
 
-    /* Optimisation de la mise en page A4 */
     body {
         background: white !important;
-        margin: 0 !important;
-        padding: 0 !important;
     }
 
     .container {
         box-shadow: none !important;
         width: 100% !important;
-        max-width: none !important;
         margin: 0 !important;
     }
 
-    /* Empêche de couper les cartes entre deux pages */
+    /* Force les couleurs de la barre latérale sur le PDF */
+    .sidebar {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background-color: #1a1a2e !important;
+        color: white !important;
+    }
+
+    /* Empêche de couper une section en plein milieu de deux pages */
     .card {
         page-break-inside: avoid;
-    }
-}
-
-@media (max-width: 1100px) {
-    .container { flex-direction: column; }
-    .sidebar, .right-panel { width: 100%; }
-
-}
-/* Conteneur pour positionner la bulle */
-.tooltip-container {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-}
-
-/* Style de la bulle (cachée par défaut) */
-.tooltip-text {
-    visibility: hidden;
-    width: 200px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%; /* Affiche la bulle au-dessus du bouton */
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 0.8rem;
-    line-height: 1.2;
-    pointer-events: none;
-}
-
-/* Flèche sous la bulle */
-.tooltip-text::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #333 transparent transparent transparent;
-}
-
-/* Affiche la bulle instantanément au survol */
-.tooltip-container:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
-}
-
-/* Cache la bulle lors de l'impression PDF */
-@media print {
-    .tooltip-text {
-        display: none !important;
-    }
-}/* Conteneur pour positionner la bulle */
-.tooltip-container {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-}
-
-/* Style de la bulle (cachée par défaut) */
-.tooltip-text {
-    visibility: hidden;
-    width: 200px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%; /* Affiche la bulle au-dessus du bouton */
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 0.8rem;
-    line-height: 1.2;
-    pointer-events: none;
-}
-
-/* Flèche sous la bulle */
-.tooltip-text::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #333 transparent transparent transparent;
-}
-
-/* Affiche la bulle instantanément au survol */
-.tooltip-container:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
-}
-
-/* Cache la bulle lors de l'impression PDF */
-@media print {
-    .tooltip-text {
-        display: none !important;
     }
 }
