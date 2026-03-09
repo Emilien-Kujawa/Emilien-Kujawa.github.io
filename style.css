@@ -85,7 +85,34 @@ hr { border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 0 20px
 .interest-item { display: flex; align-items: center; gap: 10px; font-size: 0.9em; font-weight: 500; }
 .interest-item i { color: var(--accent-color); width: 20px; }
 
+@media print {
+    /* Cache les éléments inutiles sur le PDF */
+    #downloadPdf, .btn-pdf, .social-links {
+        display: none !important;
+    }
+
+    /* Optimisation de la mise en page A4 */
+    body {
+        background: white !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .container {
+        box-shadow: none !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+    }
+
+    /* Empêche de couper les cartes entre deux pages */
+    .card {
+        page-break-inside: avoid;
+    }
+}
+
 @media (max-width: 1100px) {
     .container { flex-direction: column; }
     .sidebar, .right-panel { width: 100%; }
+
 }
