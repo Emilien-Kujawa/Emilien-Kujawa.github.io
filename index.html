@@ -1,352 +1,172 @@
 <!DOCTYPE html>
-
 <html lang="fr">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>CV - Emilien KUJAWA</title>
-
     <link rel="stylesheet" href="style.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
+    <style>
+        /* Optimisation pour l'export PDF via Impression */
+        @media print {
+            #downloadPdf, .btn-pdf, .social-links {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .container {
+                box-shadow: none !important;
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+            }
+            .card {
+                page-break-inside: avoid;
+            }
+            .sidebar {
+                background-color: #1a1a2e !important; /* Garde la couleur de la barre latérale */
+                -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
     <div class="container">
-
         <aside class="sidebar">
-
             <div class="profile-container">
-
                 <div class="profile-img">
-
-                    <img src="photo cvasa _page-0001.jpg" alt="Photo de profil">
-
+                    <img src="photo cvasa _page-0001.jpg" alt="Photo de Emilien KUJAWA">
                 </div>
-
             </div>
-
-
 
             <h1>Emilien <br><span class="lastname">KUJAWA</span></h1>
-
             <p class="subtitle">Étudiant en BTS SIO</p>
 
-
-
             <section class="contact-section">
-
                 <h3>Contact</h3>
-
                 <hr>
-
                 <ul>
-
                     <li><i class="fa-solid fa-envelope"></i> kuj.emilien@gmail.com</li>
-
                     <li><i class="fa-solid fa-phone"></i> 06 99 70 51 94</li>
-
                     <li><i class="fa-solid fa-location-dot"></i> Colmar, France</li>
-
                 </ul>
-
                 <div class="social-links">
-
                     <a href="https://www.linkedin.com/in/%C3%A9milien-kujawa-43a83538a/" target="_blank" class="btn-linkedin">LinkedIn</a>
-
                 </div>
-
             </section>
 
-
-
-                <button id="downloadPdf" class="btn-pdf">
-
+            <button id="downloadPdf" class="btn-pdf">
                 <i class="fa-solid fa-file-pdf"></i> Télécharger PDF
-
             </button>
-
         </aside>
-
-
 
         <main class="main-content">
-
             <section class="card">
-
                 <h2 class="section-title">À propos</h2>
-
                 <p>Actuellement en formation BTS Services Informatiques aux Organisations (Septembre 2025), je suis passionné par l'administration système et la gestion des réseaux. Mon engagement en tant que réserviste m'a permis de développer une grande rigueur, que je souhaite appliquer dans le domaine de l'informatique.</p>
-
             </section>
-
-
 
             <h2 class="section-heading">Expériences professionnelles</h2>
-
             
-
             <div class="card exp-card-detailed">
-
                 <div class="exp-header">
-
                     <span class="type-tag tag-army">Armée</span>
-
                     <span class="exp-date">Avril 2025 - à aujourd'hui</span>
-
                 </div>
-
                 <h3>Soldat de réserve</h3>
-
                 <p class="company">152ème régiment d’infanterie</p>
-
                 <p class="details">Discipline, esprit de corps et gestion opérationnelle en environnement exigeant. Développement d'une forte capacité d'adaptation et du sens des responsabilités.</p>
-
             </div>
 
-
-
             <div class="card exp-card-detailed">
-
                 <div class="exp-header">
-
                     <span class="type-tag tag-job">Job Étudiant</span>
-
                     <span class="exp-date">2024 (5 mois)</span>
-
                 </div>
-
                 <h3>Equipier polyvalent</h3>
-
                 <p class="company">McDonald’s</p>
-
                 <p class="details">Capacité d'adaptation et travail d'équipe sous flux tendu. Gestion du stress, respect des procédures strictes et sens du service client.</p>
-
             </div>
-
-
 
             <div class="card exp-card-detailed">
-
                 <div class="exp-header">
-
                     <span class="type-tag tag-pro">Stage</span>
-
                     <span class="exp-date">Juillet 2023</span>
-
                 </div>
-
                 <h3>Port de Strasbourg</h3>
-
                 <p class="company">Port Autonome</p>
-
                 <p class="details">
-
                     Découverte des infrastructures critiques nécessaires au fonctionnement du port et identification des zones sensibles. 
-
                     Immersion et observation de diverses spécialités : 
-
                     <strong>géomètre-cartographe</strong>, <strong>maintenance informatique</strong> et gestion technique.
-
                 </p>
-
             </div>
-
-
 
             <h2 class="section-heading">Formations</h2>
-
             <section class="card">
-
                 <div class="edu-item">
-
                     <p class="date">2025 - 2027</p>
-
                     <p><strong>BTS Services Informatiques aux Organisations</strong></p>
-
                     <p class="school">Lycée Camille Sée, Colmar</p>
-
                 </div>
-
                 <div class="edu-item" style="margin-top: 20px; padding-top: 15px; border-top: 1px dashed #eee;">
-
                     <p class="date">2023 - 2025</p>
-
                     <p><strong>Baccalauréat Général</strong> - Mention Assez Bien</p>
-
                     <p class="school">Spécialités : HGGSP / SES</p>
-
                 </div>
-
-                <div class="edu-item" style="margin-top: 20px; padding-top: 15px; border-top: 1px dashed #eee;">
-
-                </div>
-
             </section>
-
         </main>
 
-
-
         <aside class="right-panel">
-
             <section class="card right-card">
-
                 <h2 class="section-title">Compétences</h2>
-
                 
-
                 <p class="skill-category-right">Cyber & Réseaux</p>
-
                 <div class="tags-right">
-
                     <span>ANSSI (SecNum)</span>
-
                     <span>RGPD (CNIL)</span>
-
                     <span>Linux / Ubuntu</span>
-
                     <span>Réseaux & Sécurité</span>
-
                     <span>Mise en place réseaux (VLAN)</span>
-
                 </div>
-
-
 
                 <p class="skill-category-right" style="margin-top: 20px;">Programmation & Data</p>
-
                 <div class="tags-right">
-
                     <span>C#</span>
-
                     <span>Java</span>
-
                     <span>Python</span>
-
                     <span>MySQL</span>
-
                 </div>
-
                 
-
                 <p class="skill-category-right" style="margin-top: 20px;">Transversales</p>
-
                 <div class="tags-right">
-
                     <span>Gestion du stress</span>
-
                     <span>Travail sous pression</span>
-
                     <span>Esprit d'équipe</span>
-
                     <span>Rigueur de réserve</span>
-
                     <span>Anglais (B2)</span>
-
                 </div>
-
             </section>
-
-
 
             <section class="card right-card">
-
                 <h2 class="section-title">Loisirs</h2>
-
                 <div class="interests-vertical">
-
                     <div class="interest-item"><i class="fa-solid fa-person-running"></i> Marche & Course à pied</div>
-
                     <div class="interest-item"><i class="fa-solid fa-gamepad"></i> Jeux Vidéo</div>
-
                     <div class="interest-item"><i class="fa-solid fa-microchip"></i> Hardware PC</div>
-
                 </div>
-
             </section>
-
         </aside>
-
     </div>
 
-  <script>
-
-    const button = document.getElementById("downloadPdf");
-
-
-
-    button.addEventListener("click", () => {
-
-        const { jsPDF } = window.jspdf;
-
-
-
-        const element = document.querySelector(".container"); // ton CV entier
-
-        const pdf = new jsPDF("p", "mm", "a4");
-
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-
-        const pdfHeight = pdf.internal.pageSize.getHeight();
-
-
-
-        html2canvas(element, { scale: 2 }).then((canvas) => {
-
-            const imgData = canvas.toDataURL("image/png");
-
-
-
-            const imgProps = pdf.getImageProperties(imgData);
-
-            const pdfImgHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-
-
-            if (pdfImgHeight <= pdfHeight) {
-
-                // si ça tient sur une seule page
-
-                pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfImgHeight);
-
-            } else {
-
-                // si c'est plus grand qu'une page A4, on scale pour tenir
-
-                const ratio = pdfHeight / pdfImgHeight;
-
-                const scaledHeight = pdfImgHeight * ratio;
-
-                const scaledWidth = pdfWidth * ratio;
-
-                pdf.addImage(imgData, "PNG", 0, 0, scaledWidth, scaledHeight);
-
-            }
-
-
-
-            pdf.save("CV-Emilien-KUJAWA.pdf");
-
+    <script>
+        document.getElementById("downloadPdf").addEventListener("click", () => {
+            // Utilise la fonction d'impression du navigateur pour un PDF de haute qualité
+            window.print();
         });
-
-    });
-
-</script>
-
+    </script>
 </body>
-
-
-
 </html>
-
