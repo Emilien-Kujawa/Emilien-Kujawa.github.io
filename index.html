@@ -6,15 +6,39 @@
     <title>CV - Emilien KUJAWA</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        /* Optimisation pour l'export PDF via Impression */
+        @media print {
+            #downloadPdf, .btn-pdf, .social-links {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .container {
+                box-shadow: none !important;
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+            }
+            .card {
+                page-break-inside: avoid;
+            }
+            .sidebar {
+                background-color: #1a1a2e !important; /* Garde la couleur de la barre latérale */
+                -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <aside class="sidebar">
             <div class="profile-container">
                 <div class="profile-img">
-                    <img src="photo cvasa _page-0001.jpg" alt="Photo Emilien KUJAWA">
+                    <img src="photo cvasa _page-0001.jpg" alt="Photo de Emilien KUJAWA">
                 </div>
             </div>
 
@@ -34,7 +58,7 @@
                 </div>
             </section>
 
-                <button id="downloadPdf" class="btn-pdf">
+            <button id="downloadPdf" class="btn-pdf">
                 <i class="fa-solid fa-file-pdf"></i> Télécharger PDF
             </button>
         </aside>
@@ -93,8 +117,6 @@
                     <p><strong>Baccalauréat Général</strong> - Mention Assez Bien</p>
                     <p class="school">Spécialités : HGGSP / SES</p>
                 </div>
-                <div class="edu-item" style="margin-top: 20px; padding-top: 15px; border-top: 1px dashed #eee;">
-                </div>
             </section>
         </main>
 
@@ -124,6 +146,7 @@
                     <span>Gestion du stress</span>
                     <span>Travail sous pression</span>
                     <span>Esprit d'équipe</span>
+                    <span>Rigueur de réserve</span>
                     <span>Anglais (B2)</span>
                 </div>
             </section>
@@ -138,46 +161,12 @@
             </section>
         </aside>
     </div>
-  <script>
-    const button = document.getElementById("downloadPdf");
 
-    button.addEventListener("click", () => {
-        const { jsPDF } = window.jspdf;
-
-        const element = document.querySelector(".container"); // ton CV entier
-        const pdf = new jsPDF("p", "mm", "a4");
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = pdf.internal.pageSize.getHeight();
-
-        html2canvas(element, { scale: 2 }).then((canvas) => {
-            const imgData = canvas.toDataURL("image/png");
-
-            const imgProps = pdf.getImageProperties(imgData);
-            const pdfImgHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-            if (pdfImgHeight <= pdfHeight) {
-                // si ça tient sur une seule page
-                pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfImgHeight);
-            } else {
-                // si c'est plus grand qu'une page A4, on scale pour tenir
-                const ratio = pdfHeight / pdfImgHeight;
-                const scaledHeight = pdfImgHeight * ratio;
-                const scaledWidth = pdfWidth * ratio;
-                pdf.addImage(imgData, "PNG", 0, 0, scaledWidth, scaledHeight);
-            }
-
-            pdf.save("CV-Emilien-KUJAWA.pdf");
+    <script>
+        document.getElementById("downloadPdf").addEventListener("click", () => {
+            // Utilise la fonction d'impression du navigateur pour un PDF de haute qualité
+            window.print();
         });
-    });
-</script>
+    </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
