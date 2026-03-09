@@ -1,200 +1,351 @@
 <!DOCTYPE html>
+
 <html lang="fr">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CV - Emilien KUJAWA</title>
+
+    <link rel="stylesheet" href="style.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* --- RESET & BASES --- */
-        * { box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f0f2f5;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            color: #333;
-        }
 
-        /* --- STRUCTURE --- */
-        .container {
-            display: flex;
-            width: 100%;
-            max-width: 1100px;
-            background: white;
-            min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-        /* --- SIDEBAR --- */
-        .sidebar {
-            width: 300px;
-            background-color: #1a1a2e;
-            color: white;
-            padding: 30px 20px;
-            flex-shrink: 0;
-        }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 20px;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 3px solid rgba(255,255,255,0.1);
-            background: #252545;
-        }
-
-        .profile-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .sidebar h1 { font-size: 1.8rem; margin-bottom: 5px; text-align: center; }
-        .lastname { color: #8a8aff; text-transform: uppercase; }
-        .subtitle { text-align: center; opacity: 0.8; margin-bottom: 30px; }
-
-        .contact-section ul { list-style: none; padding: 0; }
-        .contact-section li { margin: 15px 0; font-size: 0.9rem; }
-        .contact-section i { margin-right: 10px; color: #8a8aff; }
-
-        /* --- BOUTON & TOOLTIP --- */
-        .tooltip-container {
-            position: relative;
-            width: 100%;
-            margin-top: 30px;
-        }
-
-        .btn-pdf {
-            width: 100%;
-            padding: 12px;
-            background: #e94560;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn-pdf:hover { background: #ff2e63; }
-
-        .tooltip-text {
-            visibility: hidden;
-            width: 100%;
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            border-radius: 6px;
-            position: absolute;
-            bottom: 120%;
-            left: 0;
-            opacity: 0;
-            transition: 0.3s;
-            font-size: 0.8rem;
-            z-index: 10;
-        }
-
-        .tooltip-container:hover .tooltip-text {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        /* --- MAIN CONTENT --- */
-        .main-content { flex: 1; padding: 40px; }
-        .card {
-            background: #fdfdfd;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            border-left: 5px solid #1a1a2e;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .section-title { color: #1a1a2e; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .tags-right span {
-            display: inline-block;
-            background: #1a1a2e;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin: 3px;
-        }
-
-        /* --- PDF OPTIMISATION --- */
-        @media print {
-            .btn-pdf, .tooltip-text { display: none !important; }
-            body { background: white; }
-            .container { box-shadow: none; width: 100%; }
-            .sidebar { -webkit-print-color-adjust: exact; background-color: #1a1a2e !important; }
-        }
-    </style>
 </head>
+
 <body>
+
     <div class="container">
+
         <aside class="sidebar">
+
             <div class="profile-container">
+
                 <div class="profile-img">
-                    <img src="photo cvasa _page-0001.jpg" alt="Photo Emilien" onerror="this.src='https://via.placeholder.com/180'">
+
+                    <img src="https://via.placeholder.com/400" alt="Photo de profil">
+
                 </div>
+
             </div>
+
+
 
             <h1>Emilien <br><span class="lastname">KUJAWA</span></h1>
+
             <p class="subtitle">Étudiant en BTS SIO</p>
 
+
+
             <section class="contact-section">
+
                 <h3>Contact</h3>
+
+                <hr>
+
                 <ul>
+
                     <li><i class="fa-solid fa-envelope"></i> kuj.emilien@gmail.com</li>
+
                     <li><i class="fa-solid fa-phone"></i> 06 99 70 51 94</li>
+
                     <li><i class="fa-solid fa-location-dot"></i> Colmar, France</li>
+
                 </ul>
+
+                <div class="social-links">
+
+                    <a href="https://www.linkedin.com/in/%C3%A9milien-kujawa-43a83538a/" target="_blank" class="btn-linkedin">LinkedIn</a>
+
+                </div>
+
             </section>
 
-            <div class="tooltip-container">
-                <span class="tooltip-text">💡 Choisissez "Enregistrer au format PDF" dans la liste des imprimantes.</span>
+
+
                 <button id="downloadPdf" class="btn-pdf">
-                    <i class="fa-solid fa-file-pdf"></i> Télécharger PDF
-                </button>
-            </div>
+
+                <i class="fa-solid fa-file-pdf"></i> Télécharger PDF
+
+            </button>
+
         </aside>
 
+
+
         <main class="main-content">
+
             <section class="card">
+
                 <h2 class="section-title">À propos</h2>
-                <p>Passionné par l'administration système et la gestion des réseaux. Réserviste au 152ème RI, j'allie rigueur militaire et compétences techniques.</p>
+
+                <p>Actuellement en formation BTS Services Informatiques aux Organisations (Septembre 2025), je suis passionné par l'administration système et la gestion des réseaux. Mon engagement en tant que réserviste m'a permis de développer une grande rigueur, que je souhaite appliquer dans le domaine de l'informatique.</p>
+
             </section>
 
-            <h2 class="section-heading">Expériences</h2>
-            <div class="card">
-                <h3>Soldat de réserve</h3>
-                <p><strong>152ème régiment d’infanterie</strong> | Depuis Avril 2025</p>
-                <p>Discipline et gestion opérationnelle.</p>
-            </div>
 
-            <div class="card">
-                <h3>Equipier polyvalent</h3>
-                <p><strong>McDonald’s</strong> | 2024</p>
-                <p>Gestion du stress et efficacité.</p>
-            </div>
 
-            <h2 class="section-heading">Compétences</h2>
-            <div class="card">
-                <div class="tags-right">
-                    <span>ANSSI (SecNum)</span><span>Linux</span><span>VLAN</span><span>C#</span><span>Python</span><span>MySQL</span>
+            <h2 class="section-heading">Expériences professionnelles</h2>
+
+            
+
+            <div class="card exp-card-detailed">
+
+                <div class="exp-header">
+
+                    <span class="type-tag tag-army">Armée</span>
+
+                    <span class="exp-date">Avril 2025 - à aujourd'hui</span>
+
                 </div>
+
+                <h3>Soldat de réserve</h3>
+
+                <p class="company">152ème régiment d’infanterie</p>
+
+                <p class="details">Discipline, esprit de corps et gestion opérationnelle en environnement exigeant. Développement d'une forte capacité d'adaptation et du sens des responsabilités.</p>
+
             </div>
+
+
+
+            <div class="card exp-card-detailed">
+
+                <div class="exp-header">
+
+                    <span class="type-tag tag-job">Job Étudiant</span>
+
+                    <span class="exp-date">2024 (5 mois)</span>
+
+                </div>
+
+                <h3>Equipier polyvalent</h3>
+
+                <p class="company">McDonald’s</p>
+
+                <p class="details">Capacité d'adaptation et travail d'équipe sous flux tendu. Gestion du stress, respect des procédures strictes et sens du service client.</p>
+
+            </div>
+
+
+
+            <div class="card exp-card-detailed">
+
+                <div class="exp-header">
+
+                    <span class="type-tag tag-pro">Stage</span>
+
+                    <span class="exp-date">Juillet 2023</span>
+
+                </div>
+
+                <h3>Port de Strasbourg</h3>
+
+                <p class="company">Port Autonome</p>
+
+                <p class="details">
+
+                    Découverte des infrastructures critiques nécessaires au fonctionnement du port et identification des zones sensibles. 
+
+                    Immersion et observation de diverses spécialités : 
+
+                    <strong>géomètre-cartographe</strong>, <strong>maintenance informatique</strong> et gestion technique.
+
+                </p>
+
+            </div>
+
+
+
+            <h2 class="section-heading">Formations</h2>
+
+            <section class="card">
+
+                <div class="edu-item">
+
+                    <p class="date">2025 - 2027</p>
+
+                    <p><strong>BTS Services Informatiques aux Organisations</strong></p>
+
+                    <p class="school">Lycée Camille Sée, Colmar</p>
+
+                </div>
+
+                <div class="edu-item" style="margin-top: 20px; padding-top: 15px; border-top: 1px dashed #eee;">
+
+                    <p class="date">2023 - 2025</p>
+
+                    <p><strong>Baccalauréat Général</strong> - Mention Assez Bien</p>
+
+                    <p class="school">Spécialités : HGGSP / SES</p>
+
+                </div>
+
+                <div class="edu-item" style="margin-top: 20px; padding-top: 15px; border-top: 1px dashed #eee;">
+
+                </div>
+
+            </section>
+
         </main>
+
+
+
+        <aside class="right-panel">
+
+            <section class="card right-card">
+
+                <h2 class="section-title">Compétences</h2>
+
+                
+
+                <p class="skill-category-right">Cyber & Réseaux</p>
+
+                <div class="tags-right">
+
+                    <span>ANSSI (SecNum)</span>
+
+                    <span>RGPD (CNIL)</span>
+
+                    <span>Linux / Ubuntu</span>
+
+                    <span>Réseaux & Sécurité</span>
+
+                    <span>Mise en place réseaux (VLAN)</span>
+
+                </div>
+
+
+
+                <p class="skill-category-right" style="margin-top: 20px;">Programmation & Data</p>
+
+                <div class="tags-right">
+
+                    <span>C#</span>
+
+                    <span>Java</span>
+
+                    <span>Python</span>
+
+                    <span>MySQL</span>
+
+                </div>
+
+                
+
+                <p class="skill-category-right" style="margin-top: 20px;">Transversales</p>
+
+                <div class="tags-right">
+
+                    <span>Gestion du stress</span>
+
+                    <span>Travail sous pression</span>
+
+                    <span>Esprit d'équipe</span>
+
+                    <span>Rigueur de réserve</span>
+
+                    <span>Anglais (B2)</span>
+
+                </div>
+
+            </section>
+
+
+
+            <section class="card right-card">
+
+                <h2 class="section-title">Loisirs</h2>
+
+                <div class="interests-vertical">
+
+                    <div class="interest-item"><i class="fa-solid fa-person-running"></i> Marche & Course à pied</div>
+
+                    <div class="interest-item"><i class="fa-solid fa-gamepad"></i> Jeux Vidéo</div>
+
+                    <div class="interest-item"><i class="fa-solid fa-microchip"></i> Hardware PC</div>
+
+                </div>
+
+            </section>
+
+        </aside>
+
     </div>
 
-    <script>
-        document.getElementById("downloadPdf").addEventListener("click", () => {
-            window.print();
+  <script>
+
+    const button = document.getElementById("downloadPdf");
+
+
+
+    button.addEventListener("click", () => {
+
+        const { jsPDF } = window.jspdf;
+
+
+
+        const element = document.querySelector(".container"); // ton CV entier
+
+        const pdf = new jsPDF("p", "mm", "a4");
+
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+
+
+
+        html2canvas(element, { scale: 2 }).then((canvas) => {
+
+            const imgData = canvas.toDataURL("image/png");
+
+
+
+            const imgProps = pdf.getImageProperties(imgData);
+
+            const pdfImgHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+
+
+            if (pdfImgHeight <= pdfHeight) {
+
+                // si ça tient sur une seule page
+
+                pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfImgHeight);
+
+            } else {
+
+                // si c'est plus grand qu'une page A4, on scale pour tenir
+
+                const ratio = pdfHeight / pdfImgHeight;
+
+                const scaledHeight = pdfImgHeight * ratio;
+
+                const scaledWidth = pdfWidth * ratio;
+
+                pdf.addImage(imgData, "PNG", 0, 0, scaledWidth, scaledHeight);
+
+            }
+
+
+
+            pdf.save("CV-Emilien-KUJAWA.pdf");
+
         });
-    </script>
+
+    });
+
+</script>
+
 </body>
+
+
+
 </html>
